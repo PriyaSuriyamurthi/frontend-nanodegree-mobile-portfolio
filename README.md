@@ -1,55 +1,105 @@
-## Website Performance Optimization portfolio project
+<h1> Website Optimization Portfolio Project </h1>
+<h2> Description of the changes:</h2>
+<h3> HTML and CSS changes: </h3>
+<h4> 1. Script link inside HTML </h4>
+<p> Modified the script link inside the HTML to async which are not required during DOM construction </p>
+<ul>
+<li> analystics.js </li>
+<li> main.js </li>
+<li> perfmatters.js </li>
+</ul>
+<p> pizza.html was modified to include view port meta link. This would be required when the page gets displayed on different device width and height
+<h4> 2. CSS changes </h4>
+<p> CSS changes are done in 2 parts:</p>
+<ul>
+<li> There were few css styles inlined to index.html as the styles are specific to this html </li>
+<li> There were few css styles defined without using class or id. This was updated with the class names so that it becomes less complex while cssom construction</li>
+<li> Not all the css properties were inlined as there were common styles for 4 html pages. 
+     <ul>
+      <li> index.html </li>
+      <li> project-2048.html </li>
+      <li> project-mobile.html </li>
+      <li> project-webperf.html </li>
+      </ul>
+</li>
+<li> pizza.html has all the styles inlined as these styles are specific to this page</li>
+<li> 2 css files were created and media query was used.  
+     <ul>
+     <li> print.css is only during the print operation. This was modified with media query so that rendering is not affected. </li>
+    <li> style-portrait will be used only when the device is in portrait mode. This was also modified using media query so that  rendering doesn't get affected. </li>
+    </ul>
+</li>
+  <li> pizza.html has few media query inlined in it. This is required to make sure the font-size of the contents are modified for the small devices. Also the display flex was modified to display:block using media query. This makes sure that the contents are not cut at the edge.
+  </li></ul>
+<h3> JavaScript changes: </h3>
+<h4> Pizza page changes: </h4>
+<ul>
+<li> Commented the functions selectRandomNonMeat, selectRandomCheese, selectRandomSauce and selectRandomCrust. Included one function itemGenerator which will randomly select the meat, nonmeat, cheese,sauce and crust based on the input passed to this function.
+  <p> switch (item) { <br>
+        case "meat":  <br>
+            return (pizzaIngredients.meats[Math.floor((Math.random() * pizzaIngredients.meats.length))]); <br>
+        case "nonmeats": <br>
+            return (pizzaIngredients.nonMeats[Math.floor((Math.random() * pizzaIngredients.nonMeats.length))]); <br>
+        case "cheese": <br>
+            return (pizzaIngredients.cheeses[Math.floor((Math.random() * pizzaIngredients.cheeses.length))]); <br>
+        case "sauce": <br>
+            return (pizzaIngredients.sauces[Math.floor((Math.random() * pizzaIngredients.sauces.length))]); <br>
+        case "crust": <br>
+            return (pizzaIngredients.crusts[Math.floor((Math.random() * pizzaIngredients.crusts.length))]); <br>
+        default: <br>
+            console.log("bug in itemGenerator"); <br>
+    } 
+    </p>
+</li>
+<li> Modified the changePizzaSize function from not invoking determine function. The pizza width was calculated based on the slider size. This slider size keeps changing when the user moves the slide in the pizza section of the web page.
+</li>
+<li> Sliding pizza load was modified to create number of pizza based on the screen width and height. Also the included img-responsive for the moving pizza images. 
+</li>
+<li> UpdatePositions function was modified to calculate the phase value and the position well before the animate. optimizied the value calculation for phase and elemPosition fields.
+</li>
+<li> transform:translateX(pos) is used for positioning the moving pizza image. This would only require composite and doesn't invoke paint or recalculation. Also will-change has been used to provide a layer for each moving pizza
+</li>
+<li> Existing scroll listener was commented. Instead the updatePositions will called at regular intervals. <br>
+This is determined as follows 
+<br>
+<span style = "{color:red}">
+function update() { <br>
+    var remainder = (document.body.scrollTop % 10) / 100; <br>
+    if (remainder === 0) { <br>
+        requestAnimationFrame(updatePositions); <br>
+    } <br>
+} <br> 
+</span>
+</li>
+</ul>
+<h2> PageSpeed sights: </h2>
+<a href="https://developers.google.com/speed/pagespeed/insights/">pagespeed Sights </a>
+<a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/index.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/index.html</a>
+<a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-2048.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-2048.html</a>
+<a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-webperf.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-webperf.html</a>
+<a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-mobile.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-mobile.html</a>
+<a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/pizza.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/pizza.html</a>
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+<h2> Gulp for minify,compress </h2>
+<p> Used Gulp to minify, compress and cache HTML,css and Javascript files.</p>
+<p> Method to install and use Gulp </p>
+<ul>
+<li> Install node.js </li>
+<li> Execute the commands on command line inside the project folder <br>
+      npm install gulp --save-dev <br>
+      npm install gulp-jshint gulp-sass gulp-concat gulp-uglify gulp-rename --save-dev
+</li>
+<li> Create package.json file using npm init. Also create gulpfile.js which has the commands on the files to minify, compress and cache. Mention the destination folder to hold all the processed file.</li>
+<li> Execute the command gulp serve to process the files and run the webpage.click Ctrl + c to exit</li>
+<li> Execute command gulp to get the destination folder with processed files.</li>
+<li> Add the destination folder to the github repository. The running web page is deployed to the github repository:
+<a href="https://github.com/PriyaSuriyamurthi/priyasuriyamurthi.github.io/tree/master/OptimizedPortfolio/dist">https://github.com/PriyaSuriyamurthi/priyasuriyamurthi.github.io/tree/master/OptimizedPortfolio/dist</a>
+</li>
+</ul>
 
-To get started, check out the repository and inspect the code.
 
-### Getting started
 
-####Part 1: Optimize PageSpeed Insights score for index.html
 
-Some useful tips to help you get started:
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
 
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
-
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to the top-level of your project directory to make your local server accessible remotely.
-
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ./ngrok http 8080
-  ```
-
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
-
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
-
-####Part 2: Optimize Frames per Second in pizza.html
-
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
-
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
-
-### Optimization Tips and Tricks
-* [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
-* [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
-* [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
-* [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
-* [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
-* [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
-
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
-
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
+  
