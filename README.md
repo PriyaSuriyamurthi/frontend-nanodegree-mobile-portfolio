@@ -62,18 +62,16 @@
 <li> Existing scroll listener was commented. Instead the updatePositions will called at regular intervals. <br>
 This is determined as follows 
 <br>
-<span style = "{color:red}">
 function update() { <br>
     var remainder = (document.body.scrollTop % 10) / 100; <br>
     if (remainder === 0) { <br>
         requestAnimationFrame(updatePositions); <br>
     } <br>
 } <br> 
-</span>
 </li>
 </ul>
 <h2> PageSpeed sights: </h2>
-<a href="https://developers.google.com/speed/pagespeed/insights/">pagespeed Sights </a>
+<a href="https://developers.google.com/speed/pagespeed/insights/">pagespeed Sights </a> <br>
 <a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/index.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/index.html</a>
 <a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-2048.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-2048.html</a>
 <a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-webperf.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-webperf.html</a>
