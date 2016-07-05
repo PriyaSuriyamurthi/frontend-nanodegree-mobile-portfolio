@@ -31,7 +31,7 @@
 </li>
   <li> pizza.html has few media query inlined in it. This is required to make sure the font-size of the contents are modified for the small devices. Also the display flex was modified to display:block using media query. This makes sure that the contents are not cut at the edge.
   </li></ul>
-<h3> JavaScript changes: </h3>
+<h3> 3. JavaScript changes: </h3>
 <h4> Pizza page changes: </h4>
 <ul>
 <li> Commented the functions selectRandomNonMeat, selectRandomCheese, selectRandomSauce and selectRandomCrust. Included one function itemGenerator which will randomly select the meat, nonmeat, cheese,sauce and crust based on the input passed to this function.
@@ -70,7 +70,7 @@ function update() { <br>
 } <br> 
 </li>
 </ul>
-<h2> PageSpeed sights: </h2>
+<h2> 4. PageSpeed sights: </h2>
 <a href="https://developers.google.com/speed/pagespeed/insights/">pagespeed Sights </a> <br>
 <a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/index.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/index.html</a>
 <a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-2048.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-2048.html</a>
@@ -78,7 +78,7 @@ function update() { <br>
 <a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-mobile.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/project-mobile.html</a>
 <a href="http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/pizza.html">http://priyasuriyamurthi.github.io/OptimizedPortfolio/dist/pizza.html</a>
 
-<h2> Gulp for minify,compress </h2>
+<h2> 5. Gulp for minify,compress </h2>
 <p> Used Gulp to minify, compress and cache HTML,css and Javascript files.</p>
 <p> Method to install and use Gulp </p>
 <ul>
