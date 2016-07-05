@@ -9,8 +9,8 @@
  *
  *      https://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  optimized-portfolioributed under the License is optimized-portfolioributed on an "AS IS" BASIS,
+ *  Unless required by viewslicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License
@@ -30,55 +30,55 @@ var reload = browserSync.reload;
 
 // Lint JavaScript
 gulp.task('jshint', function() {
-  return gulp.src(['app/js/**/*.js', 'app/views/js/**/*.js'])
+  return gulp.src(['views/js/**/*.js', 'views/styleguide/**/*.js'])
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
 });
 
-// Optimize Images
+// Optimize images
 gulp.task('images', function() {
-  return gulp.src(['app/img/**/*','app/views/images/**/*'])
-    .pipe(gulp.dest(['optimized-portfolio/img','optimized-portfolio/views/images']))
-    .pipe($.size({title: 'img'}));
+  return gulp.src('views/images/**/*')
+    .pipe(gulp.dest('dist/images'))
+    .pipe($.size({title: 'images'}));
 });
 
-// Copy All Files At The Root Level (app)
+// Copy All Files At The Root Level (views)
 gulp.task('copy', function() {
   return gulp.src([
-    'app/*',
-    '!app/*.html',
-    'node_modules/apache-server-configs/optimized-portfolio/.htaccess'
+    'views/*',
+    '!views/*.html',
+    'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
-  }).pipe(gulp.dest('optimized-portfolio'))
+  }).pipe(gulp.dest('dist'))
     .pipe($.size({title: 'copy'}));
 });
 
-// Copy All Filescopy-scripts At The Root Level (app)
-gulp.task('copy-Javascript', function() {
-  return gulp.src(['app/js/*.js','app/views/js/*.js'])
-    .pipe(gulp.dest(['optimized-portfolio/js/','optimized-portfolio/views/js/']))
-    .pipe($.size({title: 'copy-Javascripts'}));
+// Copy All Filescopy-workerjs At The Root Level (views)
+gulp.task('copy-workerjs', function() {
+  return gulp.src('views/js/jsqrcode/*.js')
+    .pipe(gulp.dest('dist/js/jsqrcode/'))
+    .pipe($.size({title: 'copy-workerjs'}));
 });
 
-// Copy image files from the img folder
-gulp.task('app-img', function() {
-  return gulp.src(['app/img/**/*.{svg,png,jpg}','app/views/images/**/*.{svg,png,jpg}'])
-    .pipe(gulp.dest(['optimized-portfolio/img/','optimized-portfolio/views/images/']))
-    .pipe($.size({title: 'app-img'}));
+// Copy image files from the Styleguide
+gulp.task('styleguide-images', function() {
+  return gulp.src('views/styleguide/**/*.{svg,png,jpg}')
+    .pipe(gulp.dest('dist/styleguide/'))
+    .pipe($.size({title: 'styleguide-images'}));
 });
 
-/*// Copy Web Fonts To optimized-portfolio
+// Copy Web Fonts To Dist
 gulp.task('fonts', function() {
-  return gulp.src(['app/fonts/**'])
-    .pipe(gulp.dest('optimized-portfolio/fonts'))
+  return gulp.src(['views/fonts/**'])
+    .pipe(gulp.dest('dist/fonts'))
     .pipe($.size({title: 'fonts'}));
-});*/
+});
 
-// Compile and Automatically Prefix Stylesheets
-gulp.task('styles', function() {
+// Compile and Automatically Prefix cssheets
+gulp.task('css', function() {
 
   var AUTOPREFIXER_BROWSERS = [
     'ie >= 10',
@@ -94,54 +94,53 @@ gulp.task('styles', function() {
 
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-    'app/**/*.scss',
-    'app/css/**/*.css',
-    'app/views/css/**/*.css'
+    'views/**/*.scss',
+    'views/css/**/*.css'
   ])
-    .pipe($.changed('styles', {extension: '.scss'}))
+    .pipe($.changed('css', {extension: '.scss'}))
     .pipe($.sass({
       precision: 10,
       onError: console.error.bind(console, 'Sass error:')
     }))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe(gulp.dest('.tmp'))
-    // Concatenate And Minify Styles
+    // Concatenate And Minify css
     .pipe($.if('*.css', $.csso()))
-    .pipe(gulp.dest('optimized-portfolio'))
-    .pipe($.size({title: 'styles'}));
+    .pipe(gulp.dest('dist/css'))
+    .pipe($.size({title: 'css'}));
 });
 
 // Concatenate And Minify JavaScript
-gulp.task('scripts', function() {
-  var sources = ['app/scripts/*.js',
-    'app/views/js/*.js', 'app/jshint/**/*.js'];
+gulp.task('js', function() {
+  var sources = ['views/js/*.js',
+    'views/styleguide/wskComponentHandler.js', 'views/styleguide/**/*.js'];
   return gulp.src(sources)
-    .pipe($.concat('main.js'))
-    // .pipe($.uglify({preserveComments: 'some'}))
+    //.pipe($.concat('main.js'))
+     .pipe($.uglify({preserveComments: 'some'}))
     // Output Files
-    .pipe(gulp.dest('optimized-portfolio/js','optimized-portfolio/views/js'))
-    .pipe($.size({title: 'scripts'}));
+    .pipe(gulp.dest('dist/js'))
+    .pipe($.size({title: 'js'}));
 });
 
 // Scan Your HTML For Assets & Optimize Them
 gulp.task('html', function() {
-  var assets = $.useref.assets({searchPath: '{.tmp,app}'});
+  var assets = $.useref.assets({searchPath: '{.tmp,views}'});
 
-  return gulp.src('app/**/**/*.html')
+  return gulp.src('views/**/**/*.html')
     .pipe(assets)
     // Remove Any Unused CSS
     // Note: If not using the Style Guide, you can delete it from
-    // the next line to only include styles your project uses.
+    // the next line to only include css your project uses.
     .pipe($.if('*.css', $.uncss({
       html: [
-        'app/index.html',
-        'app/views/pizza.html'
+        'views/index.html',
+        'views/styleguide.html'
       ],
       // CSS Selectors for UnCSS to ignore
       ignore: []
     })))
 
-    // Concatenate And Minify Styles
+    // Concatenate And Minify css
     // In case you are still using useref build blocks
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
@@ -149,15 +148,15 @@ gulp.task('html', function() {
     // Minify Any HTML
     .pipe($.if('*.html', $.minifyHtml()))
     // Output Files
-    .pipe(gulp.dest('optimized-portfolio'))
+    .pipe(gulp.dest('dist'))
     .pipe($.size({title: 'html'}));
 });
 
 // Clean Output Directory
-gulp.task('clean', del.bind(null, ['.tmp', 'optimized-portfolio/*', '!optimized-portfolio/.git'], {dot: true}));
+gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // Watch Files For Changes & Reload
-gulp.task('serve', ['styles'], function() {
+gulp.task('serve', ['css'], function() {
   browserSync({
     notify: false,
     // Customize the BrowserSync console logging prefix
@@ -166,17 +165,17 @@ gulp.task('serve', ['styles'], function() {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: ['.tmp', 'app']
+    server: ['.tmp', 'views']
   });
 
-  gulp.watch(['app/**/**/**/*.html'], reload);
-  gulp.watch(['app/**/**/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/js/**/*.js','app/views/js/**/*.js'], ['jshint']);
-  gulp.watch(['app/img/**/*','app/views/images/**/*'], reload);
+  gulp.watch(['views/**/**/**/*.html'], reload);
+  gulp.watch(['views/**/**/**/*.{scss,css}'], ['css', reload]);
+  gulp.watch(['views/js/**/*.js','views/styleguide/**/*.js'], ['jshint']);
+  gulp.watch(['views/images/**/*'], reload);
 });
 
-// Build and serve the output from the optimized-portfolio build
-gulp.task('serve:optimized-portfolio', ['default'], function() {
+// Build and serve the output from the dist build
+gulp.task('serve:dist', ['default'], function() {
   browserSync({
     notify: false,
     logPrefix: 'WSK',
@@ -184,14 +183,14 @@ gulp.task('serve:optimized-portfolio', ['default'], function() {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: 'optimized-portfolio',
-    baseDir: "optimized-portfolio"
+    server: 'dist',
+    baseDir: "dist"
   });
 });
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function(cb) {
-  runSequence('styles', ['html', 'js', 'img'], cb);
+  runSequence('css', ['html', 'js', 'images', 'styleguide-images', 'fonts', 'copy', 'copy-workerjs'], cb);
 });
 
 // Run PageSpeed Insights

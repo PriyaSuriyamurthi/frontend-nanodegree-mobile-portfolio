@@ -7,26 +7,28 @@
     "gulp-autoprefixer": "^2.0.0",
     "gulp-cache": "^0.2.4",
     "gulp-changed": "^1.0.0",
-    "gulp-concat": "^2.4.1",
+    "gulp-concat": "^2.6.0",
     "gulp-csso": "^0.2.9",
     "gulp-flatten": "0.0.4",
     "gulp-if": "^1.2.1",
-    "gulp-jshint": "^1.6.3",
+    "gulp-jshint": "^2.0.1",
     "gulp-load-plugins": "^1.2.4",
     "gulp-minify-html": "^0.1.8",
+    "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.0",
-    "gulp-sass": "^2.1.1",
+    "gulp-sass": "^2.3.2",
     "gulp-size": "^1.0.0",
-    "gulp-uglify": "^1.0.1",
+    "gulp-uglify": "^1.5.4",
     "gulp-uncss": "^0.5.2",
     "gulp-useref": "^1.0.1",
     "gulp-util": "^3.0.7",
+    "jshint": "^2.9.2",
     "jshint-stylish": "^1.0.0",
     "material-design-icons": "^1.0.1",
     "opn": "^1.0.0",
     "psi": "^0.1.6",
     "require-dir": "^0.1.0",
-    "run-sequence": "^1.0.2"
+    "run-sequence": "^1.2.2"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -43,13 +45,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PriyaSuriyamurthi/qrcode.git"
+    "url": "git+https://github.com/PriyaSuriyamurthi/frontend-nanodegree-mobile-portfolio.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PriyaSuriyamurthi/qrcode/issues"
+    "url": "https://github.com/PriyaSuriyamurthi/frontend-nanodegree-mobile-portfolio/issues"
   },
-  "homepage": "https://github.com/PriyaSuriyamurthi/qrcode#readme",
-  "description": ""
+  "homepage": "https://github.com/PriyaSuriyamurthi/frontend-nanodegree-mobile-portfolio#readme",
+  "description": "Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884)."
 }
