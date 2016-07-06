@@ -531,15 +531,16 @@ function updatePositions() {
 
     var items = document.getElementsByClassName("mover");
     var phase = [];
-    var elemPostion = [];
+    var elemPosition = [];
     /* Calculated the phase value and added the final calculation to an array **/
-    for (var j = 0; j < 5; j++) {
-        phase.push(Math.sin((window.scrollY / 1250) + j));
-        elemPostion.push(100 * phase[j] + 'px');
+    for (var j = 4; j >= 0; j--) {
+        phase[j] = Math.sin((window.scrollY / 1250) + j);
+        elemPosition[j] = 100 * phase[j] + 'px';
     }
     /*Modified the position of each moving pizza with a definite value*/
+    console.log(elemPosition);
     for (var i = 0; i < items.length; i++) {
-        items[i].style.transform = "translateX(" + elemPostion[i % 5] + ")";
+        items[i].style.transform = "translateX(" + elemPosition[i % 5] + ")";
     }
     // User Timing API to the rescue again. Seriously, it's worth learning.
     // Super easy to create custom metrics.
