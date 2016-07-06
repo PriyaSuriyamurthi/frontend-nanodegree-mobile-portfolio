@@ -46,13 +46,7 @@
             font-style: italic;
         }
     </style>
-    <!-- Few styles are common for all the 4 HTML and so not been moved to HTML as inline-->
-    <link href="css/style.css" rel="stylesheet">
-    <!-- Separated the styles based on the functionality. This would help in preventing render blocking
-    1. Print sheet will be invoked for print
-    2. style-portrait will be invoked during the portrait orientation-->
-    <link href="css/print.css" rel="stylesheet" media="print">
-    <link href="css/style-portrait.css" rel="stylesheet" media="{orientaion:portrait}">
+    
 
 </head>
 
@@ -84,7 +78,13 @@
             <p>&copy; Web Performance 2014 <span class="footerStats" id="crp-stats"></span>
             </p>
         </footer>
-
+        <!-- Few styles are common for all the 4 HTML and so not been moved to HTML as inline-->
+        <link href="css/style.css" rel="stylesheet">
+        <!-- Separated the styles based on the functionality. This would help in preventing render blocking
+        1. Print sheet will be invoked for print
+        2. style-portrait will be invoked during the portrait orientation-->
+        <link href="css/print.css" rel="stylesheet" media="print">
+        <link href="css/style-portrait.css" rel="stylesheet" media="{orientaion:portrait}">
         <!-- The below scripts are not required before DOM construction which will prevent parser blocking-->
         <script async src="js/analytics.js"></script>
         <script async src="http://www.google-analytics.com/analytics.js"></script>
