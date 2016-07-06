@@ -538,7 +538,6 @@ function updatePositions() {
         elemPosition[j] = 100 * phase[j] + 'px';
     }
     /*Modified the position of each moving pizza with a definite value*/
-    console.log(elemPosition);
     for (var i = 0; i < items.length; i++) {
         items[i].style.transform = "translateX(" + elemPosition[i % 5] + ")";
     }
