@@ -19,7 +19,7 @@ cameron *at* udacity *dot* com
 // Here are arrays of all possible pizza ingredients.
 (function() {
     "use strict";
-}());
+})();
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
     "Pepperoni",
@@ -417,7 +417,7 @@ var pizzaElementGenerator = function(i) {
     pizzaContainer.style.width = "33.33%";
     pizzaContainer.style.height = "325px";
     pizzaContainer.id = "pizza" + i; // gives each pizza element a unique id
-    pizzaImageContainer.style.width = "35%";
+    pizzaImageContainer.classList.add("col-md-6");
 
     pizzaImage.src = "images/pizza.png";
     pizzaImage.classList.add("img-responsive");
@@ -425,7 +425,7 @@ var pizzaElementGenerator = function(i) {
     pizzaContainer.appendChild(pizzaImageContainer);
 
 
-    pizzaDescriptionContainer.style.width = "65%";
+    pizzaDescriptionContainer.classList.add("col-md-6");
 
     pizzaName = document.createElement("h4");
     pizzaName.innerHTML = randomName();
@@ -480,7 +480,7 @@ var resizePizzas = function(size) {
         }
         var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
         for (var i = 0; i < randomPizzas.length; i++) {
-            randomPizzas[i].style.width = newWidth + '%';
+            randomPizzas[i].style.width = newWidth + "%";
         }
     }
 
@@ -559,7 +559,7 @@ window.onscroll = function() {
 };
 
 function update() {
-    var remainder = (document.body.scrollTop % 10) / 100;
+    var remainder = (document.body.scrollTop % 2) / 100;
     if (remainder === 0) {
         requestAnimationFrame(updatePositions);
     }

@@ -105,7 +105,7 @@ gulp.task('css', function() {
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe(gulp.dest('.tmp'))
     // Concatenate And Minify css
-    .pipe($.if('*.css', $.csso()))
+    //.pipe($.if('*.css', $.csso()))
     .pipe(gulp.dest('dist/css'))
     .pipe($.size({title: 'css'}));
 });

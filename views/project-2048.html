@@ -10,13 +10,55 @@
 
     <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
     <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> -->
-
+    <!-- Included few inline styles
+      which are modified using the class names so that they can be accessed directly.-->
+    <style>
+        .profilePic {
+            border-radius: 40px;
+            float: left;
+        }
+        
+        .headerPara {
+            font-size: 1.5em;
+            font-weight: bold;
+            padding-left: 4em;
+        }
+        
+        .headerSpan {
+            font-size: 0.8em;
+            font-weight: normal;
+        }
+        
+        .hero {
+            padding: 2em;
+            background-color: #f8f8f8;
+            font-size: 1.2em;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+        }
+        
+        .content {
+            padding: 1em 1em;
+        }
+        
+        .footerStats {
+            float: right;
+            font-style: italic;
+        }
+    </style>
+    <!-- Few styles are common for all the 4 HTML and so not been moved to HTML as inline-->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Separated the styles based on the functionality. This would help in preventing render blocking
+    1. Print sheet will be invoked for print
+    2. style-portrait will be invoked during the portrait orientation-->
+    <link href="css/print.css" rel="stylesheet" media="print">
+    <link href="css/style-portrait.css" rel="stylesheet" media="{orientaion:portrait}">
 
 </head>
 
 <body>
     <header>
-        <a href="/" class="profilePic"><img src="images/profilepic.jpg">
+        <a href="/" class="profilePic"><img src="images/profilepic.jpg" alt="profile pio">
         </a>
         <p class="headerPara">Cameron Pittman
             <br><span class="headerSpan">Course Developer</span>
@@ -30,7 +72,7 @@
 
         <div class="content">
 
-            <img class="img-responsive" src="images/2048.png">
+            <img class="img-responsive" src="images/2048.png" pic="2048 game pic">
 
             <p>Bacon ipsum dolor sit amet et pork belly porchetta excepteur dolor, laborum laboris magna labore dolore in fugiat beef ribs. Fugiat leberkas nulla do kevin dolore. Flank hamburger dolor swine prosciutto sirloin pig jerky sunt consequat pariatur. Mollit meatloaf nostrud laboris shoulder excepteur velit officia meatball nisi turkey. Nulla jowl spare ribs, et drumstick magna frankfurter.</p>
 
@@ -42,44 +84,6 @@
             <p>&copy; Web Performance 2014 <span class="footerStats" id="crp-stats"></span>
             </p>
         </footer>
-        <!-- Included few inline styles
-      which are modified using the class names so that they can be accessed directly.-->
-        <style>
-            .profilePic {
-                border-radius: 40px;
-                float: left;
-            }
-            .headerPara {
-                font-size: 1.5em;
-                font-weight: bold;
-                padding-left: 4em;
-            }
-            .headerSpan {
-                font-size: 0.8em;
-                font-weight: normal;
-            }
-            .hero {
-                padding: 2em;
-                background-color: #f8f8f8;
-                font-size: 1.2em;
-                border-bottom: 1px solid #ccc;
-                border-top: 1px solid #ccc;
-            }
-            .content {
-                padding: 1em 1em;
-            }
-            .footerStats {
-                float: right;
-                font-style: italic;
-            }
-        </style>
-        <!-- Few styles are common for all the 4 HTML and so not been moved to HTML as inline-->
-        <link href="css/style.css" rel="stylesheet">
-        <!-- Separated the styles based on the functionality. This would help in preventing render blocking
-    1. Print sheet will be invoked for print
-    2. style-portrait will be invoked during the portrait orientation-->
-        <link href="css/print.css" rel="stylesheet" media="print">
-        <link href="css/style-portrait.css" rel="stylesheet" media="{orientaion:portrait}">
         <!-- The below scripts are not required before DOM construction which will prevent parser blocking-->
         <script async src="js/analytics.js"></script>
         <script async src="//www.google-analytics.com/analytics.js"></script>
