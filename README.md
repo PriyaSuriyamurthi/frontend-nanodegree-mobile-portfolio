@@ -2,7 +2,7 @@
 <h2> Description of the changes:</h2>
 <h3> HTML and CSS changes: </h3>
 <h4> 1. Script link inside HTML </h4>
-<p> Modified the script link inside the HTML to async which are not required during DOM construction </p>
+<p> Modified the script link inside the HTML to async which are not required during DOM construction. </p>
 <ul>
 <li> analystics.js </li>
 <li> main.js </li>
@@ -12,8 +12,8 @@
 <h4> 2. CSS changes </h4>
 <p> CSS changes are done in 2 parts:</p>
 <ul>
-<li> There were few css styles inlined to index.html as the styles are specific to this html </li>
-<li> There were few css styles defined without using class or id. This was updated with the class names so that it becomes less complex while cssom construction</li>
+<li> There were few css styles inlined to index.html as the styles are specific to this html. </li>
+<li> There were few css styles defined without using class or id. This was updated with the class names so that it becomes less complex while cssom construction.</li>
 <li> Not all the css properties were inlined as there were common styles for 4 html pages. 
      <ul>
       <li> index.html </li>
@@ -22,7 +22,7 @@
       <li> project-webperf.html </li>
       </ul>
 </li>
-<li> pizza.html has all the styles inlined as these styles are specific to this page</li>
+<li> pizza.html has all the styles inlined as these styles are specific to this page.</li>
 <li> 2 css files were created and media query was used.  
      <ul>
      <li> print.css is only during the print operation. This was modified with media query so that rendering is not affected. </li>
