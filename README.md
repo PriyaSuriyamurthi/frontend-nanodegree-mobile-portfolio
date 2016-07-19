@@ -51,16 +51,12 @@
     } 
     </p>
 </li>
-<li> Modified the changePizzaSize function from not invoking determine function. The pizza width was calculated based on the slider size. This slider size keeps changing when the user moves the slide in the pizza section of the web page.
-</li>
-<li> Sliding pizza load was modified to create number of pizza based on the screen width and height. Also the included img-responsive for the moving pizza images. 
-</li>
-<li> UpdatePositions function was modified to calculate the phase value and the position well before the animate. optimizied the value calculation for phase and elemPosition fields.
-</li>
-<li> transform:translateX(pos) is used for positioning the moving pizza image. This would only require composite and doesn't invoke paint or recalculation. Also will-change has been used to provide a layer for each moving pizza
-</li>
+<li> Modified the changePizzaSize function from not invoking determine function. The pizza width was calculated based on the slider size. This slider size keeps changing when the user moves the slide in the pizza section of the web page.</li>
+<li> Sliding pizza load was modified to create number of pizza based on the screen width and height. Also the included img-responsive for the moving pizza images.</li>
+<li> UpdatePositions function was modified to calculate the phase value and the position well before the animate. optimizied the value calculation for phase and elemPosition fields.</li>
+<li> transform:translateX(pos) is used for positioning the moving pizza image. This would only require composite and doesn't invoke paint or recalculation. Also will-change has been used to provide a layer for each moving pizza.</li>
 <li> Existing scroll listener was commented. Instead the updatePositions will called at regular intervals. <br>
-This is determined as follows 
+    This is determined as follows 
 <br>
 function update() { <br>
     var remainder = (document.body.scrollTop % 10) / 100; <br>
